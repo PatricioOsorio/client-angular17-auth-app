@@ -1,6 +1,6 @@
 {
   "printWidth": 120,
-  "plugins": ["prettier-plugin-organize-attributes"],
+  "plugins": ["prettier-plugin-organize-attributes", "prettier-plugin-tailwindcss"],
   "attributeGroups": [
     "^(id|name)$",
     "$ANGULAR_STRUCTURAL_DIRECTIVE",
