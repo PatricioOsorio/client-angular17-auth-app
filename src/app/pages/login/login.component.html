@@ -1,1 +1,39 @@
-<p>login works!</p>
+<div class="flex min-h-dvh items-center justify-center">
+  <div
+    class="w-full rounded-lg bg-white shadow sm:max-w-md md:mt-0 xl:p-0 dark:border dark:border-gray-700 dark:bg-gray-800"
+  >
+    <div class="space-y-4 p-6 sm:p-8 md:space-y-6">
+      <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+        Iniciar sesión
+      </h1>
+      <p class="dark:text-slate-400">Inicia sesión en tu cuenta</p>
+      <form class="flex flex-col gap-4" [formGroup]="form" (ngSubmit)="login()">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Correo</mat-label>
+          <input matInput placeholder="Correo" formControlName="email" />
+          <mat-icon matPrefix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Contraseña</mat-label>
+          <input type="{{ hide ? 'password' : 'text' }}" matInput placeholder="Contraseña" formControlName="password" />
+          <mat-icon matPrefix>lock</mat-icon>
+          <mat-icon (click)="hide = !hide" matSuffix>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </mat-form-field>
+
+        <button
+          type="submit"
+          class="rounded-md border border-slate-200 bg-green-500 px-4 py-2 hover:bg-green-400 focus:ring focus:ring-green-300 disabled:border-green-900 disabled:bg-green-800 disabled:text-slate-400 dark:bg-green-500 dark:text-gray-800"
+          [disabled]="!form.valid"
+        >
+          Iniciar sesion
+        </button>
+
+        <div class="flex gap-2">
+          <span class="text-slate-400">No tienes cuenta?</span>
+          <a class="text-green-500" routerLink="/register">registrar</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
