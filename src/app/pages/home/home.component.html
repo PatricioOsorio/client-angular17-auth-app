@@ -1,13 +1,20 @@
-<div class="container mx-auto flex flex-col gap-4 h-full">
+<div class="container mx-auto flex h-full flex-col gap-4">
   <h1 class="my-10 text-center text-3xl font-bold">Welcome to <span class="text-5xl text-green-500">MyApp</span></h1>
-  <p class="text-center">You're not logged</p>
-  <div class="flex justify-center">
-    <a routerLink="/login"
-      ><button
-        class="rounded-md bg-green-500 px-4 py-2 text-gray-800 hover:bg-green-400 focus:ring focus:ring-green-300"
+
+  @if (userDetail) {
+    <p class="text-center">
+      Has iniciado sesión como <span class="font-bold bg-green-600 rounded p-2">{{ userDetail?.fullname }}</span>
+    </p>
+  } @else {
+    <p class="text-center">You're not logged</p>
+    <div class="flex justify-center">
+      <a routerLink="/login"
+        ><button
+          class="rounded-md bg-green-500 px-4 py-2 text-gray-800 hover:bg-green-400 focus:ring focus:ring-green-300"
+        >
+          Login
+        </button></a
       >
-        Login
-      </button></a
-    >
-  </div>
+    </div>
+  }
 </div>
