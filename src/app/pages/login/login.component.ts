@@ -6,11 +6,12 @@ import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { ButtonComponent } from '../../components/button/button.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatFormField, MatSnackBarModule, MatInputModule, MatIcon, ReactiveFormsModule, RouterLink],
+  imports: [MatFormField, MatSnackBarModule, MatInputModule, MatIcon, ReactiveFormsModule, RouterLink, ButtonComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })

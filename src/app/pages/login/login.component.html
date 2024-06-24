@@ -22,12 +22,19 @@
         </mat-form-field>
 
         <button
-          type="submit"
-          class="rounded-md border border-slate-200 bg-green-500 px-4 py-2 hover:bg-green-400 focus:ring focus:ring-green-300 disabled:border-green-900 disabled:bg-green-800 disabled:text-slate-400 dark:bg-green-500 dark:text-gray-800"
+        type="submit"
+        class="rounded-md border border-slate-200 bg-green-500 px-4 py-2 hover:bg-green-400 focus:ring focus:ring-green-300 disabled:border-green-900 disabled:bg-green-800 disabled:text-slate-400 dark:bg-green-500 dark:text-gray-800"
+        [disabled]="!form.valid"
+      >
+        Iniciar sesion
+      </button>
+
+        <!-- <app-button
+          [type]="'submit'"
           [disabled]="!form.valid"
-        >
-          Iniciar sesion
-        </button>
+          [label]="'Iniciar sesion'"
+          [classExtend]="'w-full'"
+        ></app-button> -->
 
         <div class="flex gap-2">
           <span class="text-slate-400">No tienes cuenta?</span>
