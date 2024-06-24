@@ -6,13 +6,13 @@
   <div class="flex w-full items-center justify-between">
     <a routerLink="/">Home</a>
     @if (isLoggedIn()) {
-      @if (userDetail) {
+      <!-- @if (userDetail) { -->
         <div class="flex items-center gap-4">
           <a class="flex cursor-pointer items-center gap-2" [matMenuTriggerFor]="menu">
             <div
-              class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-green-500 p-4 text-sm text-white shadow-md shadow-green-500/40 font-bold"
+              class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-green-500 p-4 text-sm font-bold text-white shadow-md shadow-green-500/40"
             >
-              {{ userDetail.fullname.charAt(0) }}
+              {{ userDetail?.fullname?.charAt(0) }}
             </div>
             <div class="flex flex-col font-medium">
               <h1 class="m-0 p-0">{{ userDetail?.fullname }}</h1>
@@ -24,13 +24,15 @@
               <mat-icon>account_circle</mat-icon>
               <span>Ver perfil</span>
             </button>
-            <button mat-menu-item (click)="logout()">
+            <button (click)="logout()" mat-menu-item>
               <mat-icon>logout</mat-icon>
               <span>Cerrar sesión</span>
             </button>
           </mat-menu>
         </div>
-      }
+      <!-- } @else {
+        <h2>else</h2>
+      } -->
     } @else {
       <div class="flex items-center gap-4">
         <a mat-button routerLink="/login">Login</a>
