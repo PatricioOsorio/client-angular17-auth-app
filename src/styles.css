@@ -1,3 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Estilo compartido para las vistas antiguas y nuevas */
+::view-transition-new(root),
+::view-transition-old(root) {
+  animation-duration: 400ms;
+  animation-timing-function: ease-in-out;
+  animation-direction: normal;
+}
+
+/* La vista antigua se desvanece */
+::view-transition-old(root) {
+  animation-name: fade-out;
+}
+
+/* La nueva vista se desvanece */
+::view-transition-new(root) {
+  animation-name: fade-in;
+  mix-blend-mode: normal;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.navbar {
+  view-transition-name: main-header-text;
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* body {
+  view-transition-name: slide-it;
+} */
+
+
+footer {
+  view-transition-name: footer;
+  animation: none;
+  mix-blend-mode: normal;
+}
