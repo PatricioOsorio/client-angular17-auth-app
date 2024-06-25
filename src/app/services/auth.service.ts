@@ -12,6 +12,7 @@ import { UserDetail } from '../interfaces/user-detail';
 })
 export class AuthService {
   apiUrl: string = environment.apiUrl;
+
   private tokenKey = 'token';
 
   constructor(private http: HttpClient) {}
