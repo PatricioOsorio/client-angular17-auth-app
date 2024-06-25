@@ -7,6 +7,9 @@
     <a routerLink="/">Home</a>
     @if (isLoggedIn()) {
       <div class="flex items-center gap-4">
+        @if (userDetail?.roles?.includes("ADMIN")) {
+          <a routerLink="/register" class="p-1">Crear nuevo usuario</a>
+        }
         <a class="flex cursor-pointer items-center gap-2" [matMenuTriggerFor]="menu">
           <div
             class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-green-500 p-4 text-sm font-bold text-white shadow-md shadow-green-500/40"
