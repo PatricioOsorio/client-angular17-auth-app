@@ -36,7 +36,7 @@ export class AuthService {
 
   getUserDetail = (): Observable<UserDetail> => this.http.get<UserDetail>(`${this.apiUrl}/account/detail`);
 
-  private getToken = (): string | null => localStorage.getItem(this.tokenKey) || null;
+  getToken = (): string | null => localStorage.getItem(this.tokenKey) || null;
 
   getUserCurrent = (): UserCurrent | null => {
     const token = this.getToken();

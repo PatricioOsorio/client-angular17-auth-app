@@ -1,12 +1,12 @@
 export interface UserDetail {
   id: string;
-  nombres: string;
+  nombre: string;
   apellidoPaterno: string;
   apellidoMaterno: string;
   correo: string;
   roles: string[];
-  phoneNumbers: string;
-  twoFactorEnabled: boolean;
-  phoneNumberConfirmed: boolean;
+  phoneNumber: null | number;
+  isDoubleFactoEnabled: boolean;
+  isPhoneNumberConfirmed: boolean;
   accessFailedCount: number;
 }
