@@ -5,8 +5,9 @@ import { LoginRequest } from '../interfaces/login-request';
 import { AuthResponse } from '../interfaces/auth-response';
 import { HttpClient } from '@angular/common/http';
 import { jwtDecode } from 'jwt-decode';
-import { UserDetail } from '../interfaces/user-detail';
+import { UserCurrent } from '../interfaces/user-current';
 import { RegisterRequest } from '../interfaces/register-request';
+import { UserDetail } from '../interfaces/user-detail';
 
 @Injectable({
   providedIn: 'root',
@@ -33,13 +34,15 @@ export class AuthService {
     );
   }
 
+  getUserDetail = (): Observable<UserDetail> => this.http.get<UserDetail>(`${this.apiUrl}/account/detail`);
+
   private getToken = (): string | null => localStorage.getItem(this.tokenKey) || null;
 
-  getUserDetail = (): UserDetail | null => {
+  getUserCurrent = (): UserCurrent | null => {
     const token = this.getToken();
     if (!token) return null;
     const decodedToken: any = jwtDecode(token);
-    const user: UserDetail = {
+    const user: UserCurrent = {
       id: decodedToken.nameid,
       fullname: decodedToken.name,
       email: decodedToken.email,

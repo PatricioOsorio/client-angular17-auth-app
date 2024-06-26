@@ -1,6 +1,12 @@
 export interface UserDetail {
-  id: number;
-  fullname: string;
-  email: string;
+  id: string;
+  nombres: string;
+  apellidoPaterno: string;
+  apellidoMaterno: string;
+  correo: string;
   roles: string[];
+  phoneNumbers: string;
+  twoFactorEnabled: boolean;
+  phoneNumberConfirmed: boolean;
+  accessFailedCount: number;
 }

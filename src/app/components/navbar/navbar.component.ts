@@ -5,14 +5,14 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MatMenuModule } from '@angular/material/menu';
-import { UserDetail } from '../../interfaces/user-detail';
+import { UserCurrent } from '../../interfaces/user-current';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Subscription, filter } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [MatToolbar, MatButtonModule, MatIconModule, RouterLink, MatMenuModule, MatSnackBarModule],
+  imports: [MatToolbar, MatButtonModule, MatIconModule, RouterLink, MatMenuModule, MatSnackBarModule, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   router = inject(Router);
   matSnackBar = inject(MatSnackBar);
 
-  userDetail = this.authService.getUserDetail();
+  userDetail = this.authService.getUserCurrent();
 
   private routerSubscription: Subscription = new Subscription();
 
@@ -38,7 +38,7 @@ export class NavbarComponent implements OnInit {
     this.routerSubscription = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.userDetail = this.authService.getUserDetail();
+        this.userDetail = this.authService.getUserCurrent();
       });
   }
 }

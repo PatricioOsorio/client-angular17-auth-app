@@ -13,5 +13,5 @@ import { ButtonComponent } from '../../components/button/button.component';
 export class HomeComponent {
  authService = inject(AuthService);
 
- userDetail = this.authService.getUserDetail();
+ userDetail = this.authService.getUserCurrent();
 }
