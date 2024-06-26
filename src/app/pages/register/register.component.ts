@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
   hideConfirmPassword = true;
   errors?: ValidationErrors[];
 
-  userDetail = this.authService.getUserDetail();
+  userDetail = this.authService.getUserCurrent();
   roles$!: Observable<Role[]>;
 
   ngOnInit(): void {
@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit {
             duration: 5000,
           });
 
-          this.router.navigate(['/login']);\
+          this.router.navigate(['/login']);
         } else {
           this.matSnackBar.open(response.message, 'Cerrar', {
             duration: 5000,
