@@ -8,7 +8,12 @@
     @if (isLoggedIn()) {
       <div class="flex items-center gap-4">
         @if (userDetail?.roles?.includes("ADMIN")) {
-          <a routerLink="/register" class="p-1">Crear nuevo usuario</a>
+          <a mat-button routerLink="/register">
+            <mat-icon>person_add</mat-icon>
+          </a>
+          <a mat-button routerLink="/users">
+            <mat-icon class="!m-0">groups</mat-icon>
+          </a>
         }
         <a class="flex cursor-pointer items-center gap-2" [matMenuTriggerFor]="menu">
           <div
@@ -31,6 +36,7 @@
             <span>Cerrar sesión</span>
           </button>
         </mat-menu>
+       
       </div>
     } @else {
       <div class="flex items-center gap-4">
