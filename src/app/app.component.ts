@@ -9,7 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
   standalone: true,
   imports: [RouterOutlet, MatButtonModule, NavbarComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styles: ``
 })
 export class AppComponent {
   title = 'client';

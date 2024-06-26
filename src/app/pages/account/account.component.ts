@@ -9,11 +9,11 @@ import { Observable } from 'rxjs';
   standalone: true,
   imports: [CommonModule, AsyncPipe, UpperCasePipe, TitleCasePipe],
   templateUrl: './account.component.html',
-  styleUrl: './account.component.css',
+  styles: ``,
 })
 export class AccountComponent implements OnInit {
   authService = inject(AuthService);
-  accountDetail$: Observable<UserDetail> = this.authService.getUserDetail() ;
+  accountDetail$: Observable<UserDetail> = this.authService.getUserDetail();
 
   ngOnInit(): void {
     this.accountDetail$ = this.authService.getUserDetail();

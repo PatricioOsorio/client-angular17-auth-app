@@ -13,7 +13,7 @@ import { ButtonComponent } from '../../components/button/button.component';
   standalone: true,
   imports: [MatFormField, MatSnackBarModule, MatInputModule, MatIcon, ReactiveFormsModule, RouterLink, ButtonComponent],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styles: ``,
 })
 export class LoginComponent implements OnInit {
   hide = true;

@@ -36,7 +36,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
     MatSnackBarModule,
   ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
+  styles: ``,
 })
 export class RegisterComponent implements OnInit {
   authService = inject(AuthService);

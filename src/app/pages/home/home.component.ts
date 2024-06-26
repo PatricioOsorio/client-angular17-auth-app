@@ -8,7 +8,7 @@ import { ButtonComponent } from '../../components/button/button.component';
   standalone: true,
   imports: [RouterLink, ButtonComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styles: ``
 })
 export class HomeComponent {
  authService = inject(AuthService);

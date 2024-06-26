@@ -14,7 +14,7 @@ import { Subscription, filter } from 'rxjs';
   standalone: true,
   imports: [MatToolbar, MatButtonModule, MatIconModule, RouterLink, MatMenuModule, MatSnackBarModule, RouterLink],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css',
+  styles: ``
 })
 export class NavbarComponent implements OnInit {
   authService = inject(AuthService);
