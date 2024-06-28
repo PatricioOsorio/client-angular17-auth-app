@@ -1,11 +1,13 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from '../../services/auth.service';
 import { RoleService } from '../../services/role.service';
 import { ButtonComponent } from '../button/button.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserDetail } from '../../interfaces/user-detail';
+import { Role } from '../../interfaces/role';
 
 @Component({
   selector: 'app-role-assign',
@@ -15,28 +17,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styles: ``,
 })
 export class RoleAssignComponent {
-  authService = inject(AuthService);
-  roleService = inject(RoleService);
-  matSnackBar = inject(MatSnackBar);
-
-  users$ = this.authService.getAllUsers();
-  roles$ = this.roleService.getRoles();
-
   selectedUser: string = '';
   selectedRole: string = '';
 
-  assignRole() {
-    this.roleService.assignRole(this.selectedUser, this.selectedRole).subscribe({
-      next: (response: { message: string }) => {
-        this.users$ = this.authService.getAllUsers();
-        this.roles$ = this.roleService.getRoles();
-        this.matSnackBar.open(response.message, 'Cerrar', { duration: 5000 });
-      },
-      error: (error: any) => {
-        this.users$ = this.authService.getAllUsers();
-        this.roles$ = this.roleService.getRoles();
-        this.matSnackBar.open(error.error.message, 'Cerrar', { duration: 5000 });
-      },
-    });
+  @Input({ required: true }) users!: UserDetail[] | null;
+  @Input({ required: true }) roles!: Role[] | null;
+
+  @Output() assignRoleEmmiter: EventEmitter<[string, string]> = new EventEmitter<[string, string]>();
+
+  assignRole(selectedUser: string, selectedRole: string) {
+    this.assignRoleEmmiter.emit([selectedUser, selectedRole]);
   }
 }

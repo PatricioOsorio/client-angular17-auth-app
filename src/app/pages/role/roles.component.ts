@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AsyncPipe } from '@angular/common';
 import { RoleListComponent } from '../../components/role-list/role-list.component';
 import { RoleAssignComponent } from '../../components/role-assign/role-assign.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-roles',
@@ -18,9 +19,13 @@ import { RoleAssignComponent } from '../../components/role-assign/role-assign.co
 export class RolesComponent {
   roleService = inject(RoleService);
   matSnackBar = inject(MatSnackBar);
+  authService = inject(AuthService);
+
   errorMessage = '';
   role: RoleCreateRequest = {} as RoleCreateRequest;
+
   roles$ = this.roleService.getRoles();
+  users$ = this.authService.getAllUsers();
 
   createRole(role: RoleCreateRequest) {
     this.roleService.createRole(role).subscribe({
@@ -43,6 +48,18 @@ export class RolesComponent {
         this.matSnackBar.open(response.message, 'Cerrar', { duration: 5000 });
       },
       error: (error: HttpErrorResponse) => {
+        this.matSnackBar.open(error.error.message, 'Cerrar', { duration: 5000 });
+      },
+    });
+  }
+
+  assignRole([selectedUser, selectedRole]: [string, string]) {
+    this.roleService.assignRole(selectedUser, selectedRole).subscribe({
+      next: (response: { message: string }) => {
+        this.roles$ = this.roleService.getRoles();
+        this.matSnackBar.open(response.message, 'Cerrar', { duration: 5000 });
+      },
+      error: (error: any) => {
         this.matSnackBar.open(error.error.message, 'Cerrar', { duration: 5000 });
       },
     });
