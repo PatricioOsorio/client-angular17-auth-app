@@ -4,11 +4,13 @@ import { RoleService } from '../../services/role.service';
 import { RoleCreateRequest } from '../../interfaces/tole-create-request';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AsyncPipe } from '@angular/common';
+import { RoleListComponent } from '../../components/role-list/role-list.component';
 
 @Component({
   selector: 'app-roles',
   standalone: true,
-  imports: [RoleFormComponent],
+  imports: [RoleFormComponent, RoleListComponent, AsyncPipe],
   templateUrl: './roles.component.html',
   styles: ``,
 })
@@ -17,6 +19,7 @@ export class RolesComponent {
   matSnackBar = inject(MatSnackBar);
   errorMessage = '';
   role: RoleCreateRequest = {} as RoleCreateRequest;
+  roles$ = this.roleService.getRoles();
 
   createRole(role: RoleCreateRequest) {
     this.roleService.createRole(role).subscribe({
@@ -24,10 +27,23 @@ export class RolesComponent {
         this.matSnackBar.open(response.message, 'Cerrar', { duration: 5000 });
         this.errorMessage = '';
         this.role = {} as RoleCreateRequest;
+        this.roles$ = this.roleService.getRoles();
       },
-      error: (error:HttpErrorResponse) => {
+      error: (error: HttpErrorResponse) => {
         if (error.status === 400) this.errorMessage = error.error.message;
-      }
+      },
+    });
+  }
+
+  deleteRole(id: string) {
+    this.roleService.deleteRole(id).subscribe({
+      next: (response: { message: string }) => {
+        this.roles$ = this.roleService.getRoles();
+        this.matSnackBar.open(response.message, 'Cerrar', { duration: 5000 });
+      },
+      error: (error: HttpErrorResponse) => {
+        this.matSnackBar.open(error.error.message, 'Cerrar', { duration: 5000 });
+      },
     });
   }
 }

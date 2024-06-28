@@ -1,8 +1,15 @@
-<div class="rounded-mdp-4 mt-4 w-full">
+<div class="w-full rounded-md bg-slate-800 p-4 shadow-md shadow-slate-900/50 md:p-8 lg:p-16">
   <form (ngSubmit)="add()">
     <mat-form-field class="w-full">
       <mat-label>Nombre del rol</mat-label>
-      <input name="roleName" [(ngModel)]="role.roleName" matInput placeholder="Nombre del rol" required (ngModelChange)="onInputChange()"/>
+      <input
+        name="roleName"
+        [(ngModel)]="role.roleName"
+        (ngModelChange)="onInputChange()"
+        matInput
+        placeholder="Nombre del rol"
+        required
+      />
       @if (!role.roleName) {
         <mat-error>Nombre del rol es requerido</mat-error>
       }
