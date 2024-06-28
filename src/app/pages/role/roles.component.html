@@ -1,17 +1,23 @@
 <div class="container mx-auto mt-4 p-4">
-  <h1 class="text-2xl font-semibold">Manejo de roles</h1>
-  <hr class="my-4 border-slate-600" />
-  <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-    <div>
-      <app-role-form [errorMessage]="errorMessage" [role]="role" (addRole)="createRole($event)" />
+  <div class="flex flex-col justify-between gap-4 lg:flex-row">
+    <div class="flex flex-col gap-4 lg:w-1/2">
+      <div>
+        <h2 class="text-2xl font-semibold">Crear de roles</h2>
+        <hr class="my-4 border-slate-600" />
+        <app-role-form [errorMessage]="errorMessage" [role]="role" (addRole)="createRole($event)" />
+      </div>
+      <div>
+        <h2 class="text-2xl font-semibold">Asignar rol a usuario</h2>
+        <hr class="my-4 border-slate-600" />
+        <h1>Asignar rol a usuario</h1>
+        <app-role-assign />
+      </div>
     </div>
-
-    <div>
+    
+    <div class="lg:w-1/2">
+      <h2 class="text-2xl font-semibold">Roles</h2>
+      <hr class="my-4 border-slate-600" />
       <app-role-list [roles]="roles$ | async" (deleteRoleEmmiter)="deleteRole($event)" />
-    </div>
-
-    <div>
-      <h1>Asignar rol a usuario</h1>
     </div>
   </div>
 </div>

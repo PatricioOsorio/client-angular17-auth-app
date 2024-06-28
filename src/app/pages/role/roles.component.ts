@@ -6,11 +6,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AsyncPipe } from '@angular/common';
 import { RoleListComponent } from '../../components/role-list/role-list.component';
+import { RoleAssignComponent } from '../../components/role-assign/role-assign.component';
 
 @Component({
   selector: 'app-roles',
   standalone: true,
-  imports: [RoleFormComponent, RoleListComponent, AsyncPipe],
+  imports: [RoleFormComponent, RoleListComponent, RoleAssignComponent, AsyncPipe],
   templateUrl: './roles.component.html',
   styles: ``,
 })
