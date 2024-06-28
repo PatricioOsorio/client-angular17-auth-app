@@ -1,0 +1,16 @@
+<div class="rounded-mdp-4 mt-4 w-full">
+  <form (ngSubmit)="add()">
+    <mat-form-field class="w-full">
+      <mat-label>Nombre del rol</mat-label>
+      <input name="roleName" [(ngModel)]="role.roleName" matInput placeholder="Nombre del rol" required (ngModelChange)="onInputChange()"/>
+      @if (!role.roleName) {
+        <mat-error>Nombre del rol es requerido</mat-error>
+      }
+    </mat-form-field>
+    @if (errorMessage) {
+      <mat-error class="mb-4">{{ errorMessage }}</mat-error>
+    }
+
+    <app-button [disabled]="!role.roleName" [label]="'Crear'" [type]="'submit'" [classExtend]="'w-full'"></app-button>
+  </form>
+</div>

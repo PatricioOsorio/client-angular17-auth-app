@@ -6,6 +6,7 @@ import { AccountComponent } from './pages/account/account.component';
 import { authGuard } from './guards/auth.guard';
 import { UsersComponent } from './pages/users/users.component';
 import { roleGuard } from './guards/role.guard';
+import { RolesComponent } from './pages/role/roles.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,4 +21,13 @@ export const routes: Routes = [
       roles: ['ADMIN'],
     },
   },
+  {
+    path: 'roles',
+    component: RolesComponent,
+    canActivate: [roleGuard],
+    data: {
+      roles: ['ADMIN'],
+    },
+  },
+
 ];

@@ -1,0 +1,9 @@
+<div class="container mx-auto mt-4 p-4">
+  <div class="grid grid-cols-1 md:grid-cols-2">
+    <div>
+      <h1 class="text-2xl font-semibold">Manejo de roles</h1>
+      <hr class="my-4 border-slate-600" />
+      <app-role-form [errorMessage]="errorMessage" [role]="role" (addRole)="createRole($event)" />
+    </div>
+  </div>
+</div>

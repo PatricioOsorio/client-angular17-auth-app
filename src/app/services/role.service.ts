@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Role } from '../interfaces/role';
+import { RoleCreateRequest } from '../interfaces/tole-create-request';
 
 @Injectable({
   providedIn: 'root',
@@ -16,5 +17,9 @@ export class RoleService {
 
   getRoles(): Observable<Role[]> {
     return this.http.get<Role[]>(`${this.apiUrl}/roles/getRoles`);
+  }
+
+  createRole(role: RoleCreateRequest): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(`${this.apiUrl}/roles/create`, role);
   }
 }
