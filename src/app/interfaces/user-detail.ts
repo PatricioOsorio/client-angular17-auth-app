@@ -1,9 +1,9 @@
 export interface UserDetail {
   id: string;
-  nombre: string;
-  apellidoPaterno: string;
-  apellidoMaterno: string;
-  correo: string;
+  names: string;
+  paternalLastName: string;
+  mothersLastName: string;
+  email: string;
   roles: string[];
   phoneNumber: null | number;
   isDoubleFactoEnabled: boolean;

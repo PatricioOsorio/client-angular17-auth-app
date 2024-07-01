@@ -1,8 +1,8 @@
 export interface RegisterRequest {
-  nombres: string;
-  apellidoPaterno: string;
-  apellidoMaterno: string;
-  correo: string;
+  names: string;
+  paternalLastName: string;
+  mothersLastName: string;
+  email: string;
   password: string;
   roles: string[];
 }

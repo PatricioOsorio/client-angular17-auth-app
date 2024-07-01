@@ -4,7 +4,7 @@
     <mat-select [(value)]="selectedUser">
       @for (user of users; track user.id) {
         <mat-option [value]="user.id"
-          >{{ user.nombre }} {{ user.apellidoPaterno }} {{ user.apellidoMaterno }}</mat-option
+          >{{ user.names }} {{ user.paternalLastName }} {{ user.mothersLastName }}</mat-option
         >
       }
     </mat-select>

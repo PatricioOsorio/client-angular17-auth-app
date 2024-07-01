@@ -32,7 +32,7 @@
       <form class="flex flex-col gap-4" [formGroup]="formRegister" (ngSubmit)="register()">
         <mat-form-field appearance="fill" class="w-full">
           <mat-label>Nombres</mat-label>
-          <input matInput placeholder="Nombres" formControlName="nombres" />
+          <input matInput placeholder="Nombres" formControlName="names" />
           <mat-icon matPrefix>drive_file_rename_outline</mat-icon>
           @if (hasErrors("nombres", "required")) {
             <mat-error>Nombre requerido</mat-error>
@@ -41,7 +41,7 @@
 
         <mat-form-field appearance="fill" class="w-full">
           <mat-label>Apellido Paterno</mat-label>
-          <input matInput placeholder="Apellido Paterno" formControlName="apellidoPaterno" />
+          <input matInput placeholder="Apellido Paterno" formControlName="paternalLastName" />
           <mat-icon matPrefix>drive_file_rename_outline</mat-icon>
           @if (hasErrors("apellidoPaterno", "required")) {
             <mat-error>Apellido paterno requerido</mat-error>
@@ -50,7 +50,7 @@
 
         <mat-form-field appearance="fill" class="w-full">
           <mat-label>Apellido Materno</mat-label>
-          <input matInput placeholder="Apellido Materno" formControlName="apellidoMaterno" />
+          <input matInput placeholder="Apellido Materno" formControlName="mothersLastName" />
           <mat-icon matPrefix>drive_file_rename_outline</mat-icon>
           @if (hasErrors("apellidoMaterno", "required")) {
             <mat-error>Apellido paterno requerido</mat-error>
@@ -59,7 +59,7 @@
 
         <mat-form-field appearance="fill" class="w-full">
           <mat-label>Correo</mat-label>
-          <input type="email" matInput placeholder="Correo" formControlName="correo" />
+          <input type="email" matInput placeholder="Correo" formControlName="email" />
           <mat-icon matPrefix>email</mat-icon>
           @if (hasErrors("correo", "email")) {
             <mat-error>Correo invalido</mat-error>

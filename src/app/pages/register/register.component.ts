@@ -56,10 +56,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.formRegister = this.formBuilder.group(
       {
-        nombres: ['', Validators.required],
-        apellidoPaterno: ['', Validators.required],
-        apellidoMaterno: ['', Validators.required],
-        correo: ['', [Validators.email, Validators.required]],
+        names: ['', Validators.required],
+        paternalLastName: ['', Validators.required],
+        mothersLastName: ['', Validators.required],
+        email: ['', [Validators.email, Validators.required]],
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
         roles: ['', Validators.required],
@@ -107,7 +107,7 @@ export class RegisterComponent implements OnInit {
     const confirmPassword = control.get('confirmPassword');
     if (password?.value !== confirmPassword?.value) {
       confirmPassword?.setErrors({ passwordMismatch: true });
-      return { passwordMismatch: true };
+      return { passwordMismatch: true };  
     } else {
       // confirmPassword?.setErrors(null);
       return null;
