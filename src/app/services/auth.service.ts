@@ -81,4 +81,7 @@ export class AuthService {
   };
 
   getAllUsers = (): Observable<UserDetail[]> => this.http.get<UserDetail[]>(`${this.apiUrl}/account/getUsers`);
+
+  forgotPassword = (email: string): Observable<AuthResponse> =>
+    this.http.post<AuthResponse>(`${this.apiUrl}/account/forgotPassword`, { email });
 }

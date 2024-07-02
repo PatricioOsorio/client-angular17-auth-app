@@ -7,12 +7,16 @@ import { authGuard } from './guards/auth.guard';
 import { UsersComponent } from './pages/users/users.component';
 import { roleGuard } from './guards/role.guard';
 import { RolesComponent } from './pages/role/roles.component';
+import { ForgetPasswordComponent } from './pages/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'account/:id', component: AccountComponent, canActivate: [authGuard] },
+  { path: 'forgetPassword', component: ForgetPasswordComponent },
+  { path: 'resetPassword', component: ResetPasswordComponent },
   {
     path: 'users',
     component: UsersComponent,
@@ -25,9 +29,6 @@ export const routes: Routes = [
     path: 'roles',
     component: RolesComponent,
     canActivate: [roleGuard],
-    data: {
-      roles: ['ADMIN'],
-    },
+    data: { roles: ['ADMIN'] },
   },
-
 ];
